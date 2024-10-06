@@ -1,0 +1,64 @@
+<div class="gpt-app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>AI Sessions</h2>
+    </div>
+
+    <!-- Your component.html -->
+    <ul class="sessions-list" #sessionsList>
+      <li *ngFor="let session of sessions" (click)="selectSession(session)"
+        [ngClass]="{'selected': selectedSession?.session_id === session.session_id}">
+        <span>{{ session.name }} {{ session.session_id }}</span>
+        <!-- Delete Button -->
+        <button (click)="deleteSession(session, $event)" class="delete-button" *ngIf="selectedSession?.session_id === session.session_id">
+          <mat-icon>delete</mat-icon>
+
+        </button>
+      </li>
+    </ul>
+
+    <button class="new-session" (click)="startNewSession()">+ New Session</button>
+    <div class="profile-button-container">
+      <button class="profile-button" (click)="goToUserProfile()">👤</button>
+    </div>
+  </aside>
+
+  <!-- Main Chat Area -->
+  <section class="chat-area">
+    <div class="chat-header">
+      <h3>Chat with AI</h3>
+    </div>
+
+    <div class="chat-messages" *ngIf="!selectedSession">
+      <h4>Welcome to GPT Chat!</h4>
+      <p>This is a chat interface where you can ask questions or discuss various topics with GPT.</p>
+      <p>Simply Choose session and type your message in the input box below and hit 'Send' to get a response.</p>
+      <p>You can also start new sessions to keep your conversations organized.</p>
+    </div>
+
+    <div class="chat-messages" *ngIf="selectedSession" #chatMessagesContainer>
+      <div *ngFor="let message of selectedSession.messages">
+        <!-- User Message (Right) -->
+        <div class="message-row user" *ngIf="message.message">
+          <div class="message user">
+            <span>{{ message.message }}</span>
+          </div>
+        </div>
+
+        <!-- GPT Message (Left) -->
+        <div class="message-row gpt" *ngIf="message.answer">
+          <div class="message gpt">
+            <span>{{ message.answer }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <form (ngSubmit)="sendMessage()" class="message-input" >
+      <input type="text" [(ngModel)]="userInput" name="userInput" placeholder="Type your message here" required />
+      <button type="submit" class="send-button">Send</button>
+    </form>
+  </section>
+</div>

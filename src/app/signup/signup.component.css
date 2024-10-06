@@ -1,0 +1,105 @@
+/* General container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Left Section: App Overview */
+  .app-overview {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-right: 20px;
+    max-width: 50%;
+  }
+  
+  .app-overview h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .app-overview p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* Right Section: Sign-Up Section */
+  .signup-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 40%;
+  }
+  
+  .signup-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-submit:hover {
+    background-color: #45a049;
+  }
+  
+  .login-text {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .login-text a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  .login-text a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Layout */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .app-overview, .signup-section {
+      max-width: 100%;
+      margin-right: 0;
+    }
+  }
+  

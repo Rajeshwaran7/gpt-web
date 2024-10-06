@@ -1,0 +1,38 @@
+<div class="container">
+    <!-- Left: App Overview Section -->
+    <section class="app-overview">
+      <h2>Join GPT Web Today!</h2>
+      <p>Create your account to access our AI-driven platform for assistance with a variety of tasks, from content generation to complex problem-solving. Experience the benefits of GPT models at your fingertips!</p>
+    </section>
+  
+    <!-- Right: Sign-Up Form Section -->
+    <section class="signup-section">
+      <h2>Sign Up for an Account</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" [(ngModel)]="username" name="username" placeholder="Enter your username" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Create a password" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+  
+        <button type="submit" class="btn-submit">Sign Up</button>
+      </form>
+  
+      <p class="login-text">Already have an account? <a href="#">Log in here</a></p>
+    </section>
+  </div>
+  

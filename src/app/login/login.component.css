@@ -1,0 +1,108 @@
+/* General container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Make the sections fill the full height */
+  height: 100vh;
+}
+
+/* Left Section: App Overview */
+.app-overview {
+  flex: 1;
+  padding: 20px;
+    background-color: #1f2937;
+  max-width: 50%; /* Controls the width of the left side */
+  color: white; /* Ensure the text is readable */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-overview h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: white; /* Text color */
+}
+
+.app-overview p {
+  font-size: 16px;
+  color: white; /* Text color */
+}
+
+/* Right Section: Login Section */
+.login-section {
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #45a049;
+}
+
+.sign-up-text {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sign-up-text a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.sign-up-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .app-overview,
+  .login-section {
+    max-width: 100%;
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,15 @@
+<div class="user-profile">
+    <div class="profile-header">
+      <img [src]="user.profilePicture" alt="{{ user.name }}" class="profile-picture" />
+      <h3>{{ user.name }}</h3>
+      <p>{{ user.email }}</p>
+    </div>
+  
+    <div class="profile-body">
+      <p><strong>Joined: </strong> {{ user.joinDate }}</p>
+      <p><strong>Last Active: </strong> {{ user.lastActive }}</p>
+    </div>
+  
+    <button class="logout-button" (click)="logout()">Logout</button>
+  </div>
+  
