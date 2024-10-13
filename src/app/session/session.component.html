@@ -11,7 +11,8 @@
         [ngClass]="{'selected': selectedSession?.session_id === session.session_id}">
         <span>{{ session.name }} {{ session.session_id }}</span>
         <!-- Delete Button -->
-        <button (click)="deleteSession(session, $event)" class="delete-button" *ngIf="selectedSession?.session_id === session.session_id">
+        <button (click)="deleteSession(session, $event)" class="delete-button"
+          *ngIf="selectedSession?.session_id === session.session_id">
           <mat-icon>delete</mat-icon>
 
         </button>
@@ -38,7 +39,7 @@
     </div>
 
     <div class="chat-messages" *ngIf="selectedSession" #chatMessagesContainer>
-      <div *ngFor="let message of selectedSession.messages">
+      <div *ngFor="let message of selectedSession.messages let i = index">
         <!-- User Message (Right) -->
         <div class="message-row user" *ngIf="message.message">
           <div class="message user">
@@ -52,13 +53,21 @@
             <span>{{ message.answer }}</span>
           </div>
         </div>
+        <div class="message-row gpt" *ngIf="selectedSession.messages.length - 1 == i && isTyping">
+          <div class="message gpt typing-loader">
+            <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+          </div>
+        </div>
+      
       </div>
     </div>
 
     <!-- Input Area -->
-    <form (ngSubmit)="sendMessage()" class="message-input" >
-      <input type="text" [(ngModel)]="userInput" name="userInput" placeholder="Type your message here" required />
-      <button type="submit" class="send-button">Send</button>
+    <!-- Input Area -->
+    <form (ngSubmit)="sendMessage()" class="message-input">
+      <input type="text" [(ngModel)]="userInput" name="userInput" placeholder="Type your message here" required
+        [disabled]="!selectedSession" />
+      <button type="submit" class="send-button" [disabled]="!selectedSession">Send</button>
     </form>
   </section>
 </div>

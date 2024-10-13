@@ -10,9 +10,12 @@ import { SessionComponent } from './session/session.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule here
 
 @NgModule({
   declarations: [
@@ -27,12 +30,15 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     FormsModule  ,// Add FormsModule here
     HttpClientModule, BrowserAnimationsModule,  // Add HttpClientModule here
-    MatIconModule,
-    MatMenuModule,
-    MatButtonModule
-
+    CommonModule,
+    BrowserAnimationsModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent ,UserProfileComponent]
 })
 export class AppModule { }

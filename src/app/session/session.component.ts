@@ -22,6 +22,7 @@ export class SessionComponent implements OnInit {
   sessions: Session[] = [];
   selectedSession: Session | null = null;
   userInput: string = '';
+  isTyping: boolean = false;
 
   constructor(private sessionService: SessionService, private chatService: ChatService,private router:Router) {
     const user = JSON.parse(localStorage.getItem('userData')!);
@@ -130,16 +131,19 @@ export class SessionComponent implements OnInit {
   }
 
   sendMessage(): void {
+   
     if (this.userInput.trim() && this.selectedSession) {
+    
       const userMessage = this.userInput;
       this.selectedSession.messages.push({ message: userMessage, answer: '' });
-
+      this.isTyping = true;
       this.chatService.createChats({
         user_id: this.userData.id,
         session_id: this.selectedSession.session_id,
         message: userMessage
       }).subscribe({
         next: (response) => {
+          this.isTyping = false;
           const gptResponse = response.answer;
           this.selectedSession?.messages.push({ message: '', answer: gptResponse });
           this.scrollToBottom(); // Call scrollToBottom after receiving GPT's response
@@ -147,8 +151,10 @@ export class SessionComponent implements OnInit {
         error: (error) => {
           console.error('Message sending failed:', error);
           alert('Message sending failed. Please try again.');
+          this.isTyping = false;
         },
         complete: () => {
+          this.isTyping = false;
           console.log('Message sent successfully.');
         }
       });
